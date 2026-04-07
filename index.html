@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tanvirr Talukar | Software Engineer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/index.css" />
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    <div id="custom-cursor-dot"></div>
+
+    <div class="app-container">
+        <!-- SVG Filters for Chroma Key -->
+        <svg width="0" height="0" style="position: absolute;">
+            <defs>
+                <filter id="chroma-key-blue">
+                    <!-- Chroma Key: Alpha = 1 if (B - (R+G)/2) < 0.1 else 0 -->
+                    <!-- This matrix is tuned for bright blue backgrounds. -->
+                    <feColorMatrix type="matrix" 
+                        values="1 0 0 0 0
+                                0 1 0 0 0
+                                0 0 1 0 0
+                                -1.5 -1.5 3 -0.5 0" />
+                </filter>
+            </defs>
+        </svg>
+
+        <!-- Navigation -->
+        <nav class="navbar glass">
+            <div class="logo">TANVIRR<span style="color: #00f2ff">_001</span></div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#tech-stack" class="nav-link">Skills</a></li>
+                <li><a href="#work" class="nav-link">Work</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="https://www.freelancer.com/u/Firsttime2" target="_blank" class="button-modern">Hire Me</a>
+        </nav>
+
+        <!-- Hero Section Overhaul -->
+        <section class="hero-engine">
+            <!-- Layers for Parallax & 3D Tilt -->
+            <div class="layer layer-bg" style="background-image: url('/assets/background.png');"></div>
+            
+            <!-- Tech Diagram Mesh (Left-Center Background) -->
+            <div class="layer layer-mesh">
+                <svg viewBox="0 0 800 600" class="svg-diagram-mesh">
+                    <path class="animated-path" d="M100 100 L300 200 L500 150 L700 300" stroke="#00f2ff" stroke-opacity="0.3" fill="none" stroke-width="1.5"/>
+                    <path class="animated-path" d="M100 300 L250 250 L400 450 L600 400" stroke="#00f2ff" stroke-opacity="0.2" fill="none" stroke-width="1"/>
+                    <circle cx="100" cy="100" r="5" fill="#00f2ff" class="node-pulse"/>
+                    <circle cx="300" cy="200" r="4" fill="#00f2ff" class="node-pulse"/>
+                    <circle cx="500" cy="150" r="3" fill="#00f2ff" class="node-pulse"/>
+                    <text x="320" y="200" fill="#00f2ff" fill-opacity="0.6" style="font-size: 10px; font-family: monospace;">API_GATEWAY_v2</text>
+                </svg>
+            </div>
+
+            <div class="hero-frame">
+                <!-- Content Left -->
+                <div class="content-left">
+                    <div class="status-box">
+                        <span class="status-dot"></span>
+                        SYSTEM STATUS: ONLINE - MIRPUR 10, DHAKA
+                    </div>
+                    
+                    <h1 class="main-headline">
+                        Building the <span class="purple-grad">Future</span> of <br>
+                        <span class="cyan-grad">Web Architectures.</span>
+                    </h1>
+                    
+                    <p class="main-subtext">
+                        <strong>Software Engineer</strong> | AI Solutions Architect. I build production-ready systems that automate real business problems—not just demos.
+                    </p>
+                    
+                    <div class="action-buttons">
+                        <a href="https://github.com/Anvirrr-001" target="_blank" class="btn-architect">VIEW PROJECTS</a>
+                        <a href="https://github.com/Anvirrr-001" target="_blank" class="btn-architect">GITHUB</a>
+                    </div>
+                </div>
+
+                <!-- Technical Visuals Right -->
+                <div class="visual-stack">
+                    <div class="profile-man-container">
+                        <div class="profile-frame">
+                            <img src="/assets/profile.png" alt="Tanvirr Talukar" class="profile-man" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="profile-fallback" style="display: none;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="scan-line"></div>
+                    </div>
+                    
+                    <!-- Floating Architectural HUD Panels (Foreground) -->
+                    <div class="hud panel-api" data-depth="0.15">
+                        <div class="hud-label">API_SCHEMA</div>
+                        <div class="hud-grid-mesh"></div>
+                        <div class="hud-api-flow"></div>
+                    </div>
+                    
+                    <div class="hud panel-terminal" data-depth="0.25">
+                        <div class="terminal-header">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="data-stream-container" id="stream-container"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="hud panel-blueprint" data-depth="0.08">
+                        <div class="blueprint-line h1"></div>
+                        <div class="blueprint-line h2"></div>
+                        <div class="blueprint-line v1"></div>
+                        <div class="label-schematic">SCHEMATIC_v4.2</div>
+                    </div>
+
+                    <div class="floating-sparkle sparkle-1">✦</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact & Earnings Section -->
+        <section id="impact" class="section">
+            <div class="impact-container glass neon-border">
+                <div class="impact-item">
+                    <span class="impact-label">TOTAL EARNINGS</span>
+                    <h2 class="impact-value">$<span class="counter" data-target="4000">0</span>+</h2>
+                    <p class="impact-desc">High-value contracts delivered across global markets.</p>
+                </div>
+                <div class="impact-divider"></div>
+                <div class="impact-item">
+                    <span class="impact-label">PROJECTS COMPLETED</span>
+                    <h2 class="impact-value"><span class="counter" data-target="150">0</span>+</h2>
+                    <p class="impact-desc">From automation scripts to enterprise-grade AI systems.</p>
+                </div>
+                <div class="impact-divider"></div>
+                <div class="impact-item">
+                    <span class="impact-label">CLIENT RETENTION</span>
+                    <h2 class="impact-value">98%</h2>
+                    <p class="impact-desc">Consistently exceeding architectural expectations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack section -->
+        <section id="tech-stack" class="section">
+            <span class="section-tag">CORE_COMPETENCIES</span>
+            <div class="tech-grid">
+                <div class="tech-card glass">
+                    <i class="tech-icon">AI</i>
+                    <h4>Large Language Models</h4>
+                    <p>OpenAI, Anthropic, Llama 3 integration & fine-tuning.</p>
+                </div>
+                <div class="tech-card glass">
+                    <i class="tech-icon">JS</i>
+                    <h4>Full-Stack Mastery</h4>
+                    <p>Next.js, Node.js, and complex React architectures.</p>
+                </div>
+                <div class="tech-card glass">
+                    <i class="tech-icon">PY</i>
+                    <h4>Backend & Automation</h4>
+                    <p>Python, FastAPI, and robust workflow engineering.</p>
+                </div>
+                <div class="tech-card glass">
+                    <i class="tech-icon">DB</i>
+                    <h4>Scalable Data</h4>
+                    <p>PostgreSQL, MongoDB, and vector databases for AI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section Overhaul -->
+        <section id="about" class="section glass" style="margin: 50px 5%; border-radius: 40px; padding: 60px;">
+            <div class="about-grid">
+                <div class="about-header">
+                    <h2 class="hero-hero-title" style="font-size: 2.5rem;">Tanvirr Talukder — <span class="cyan-grad">Software Engineer</span></h2>
+                    <div class="about-stats">
+                        <span>📍 Mirpur 10, Dhaka, Bangladesh</span>
+                        <span>💼 $8 USD / Hour</span>
+                        <span>📅 Freelancing since August 2021</span>
+                    </div>
+                </div>
+                <div class="about-content-body">
+                    <p class="main-subtext" style="max-width: 100%;">
+                        I'm <strong>Tanvirr Talukder</strong>, a passionate <strong>Software Engineer</strong> and <strong>AI Solutions Architect</strong> from Dhaka, Bangladesh. I specialize in building production-ready systems that automate real business problems — not just demos, but scalable solutions that deliver measurable results. With expertise spanning full-stack development, AI integration, and mobile engineering, I bring ideas from concept to deployment.
+                    </p>
+                    
+                    <div class="pillars-grid">
+                        <div class="pillar">
+                            <h3>AI & Automation</h3>
+                            <ul>
+                                <li>Custom AI chatbots & virtual assistants</li>
+                                <li>Business workflow automation</li>
+                                <li>CRM integration (Jivo, Jira, pipelines)</li>
+                                <li>LLM fine-tuning & prompt engineering</li>
+                            </ul>
+                        </div>
+                        <div class="pillar">
+                            <h3>Full-Stack Development</h3>
+                            <ul>
+                                <li>Web apps: Next.js, React, PHP, JavaScript</li>
+                                <li>Mobile apps: Kotlin/Android</li>
+                                <li>Payment Integration & REST APIs</li>
+                                <li>Database design: PostgreSQL, MongoDB</li>
+                            </ul>
+                        </div>
+                        <div class="pillar">
+                            <h3>Recent Projects</h3>
+                            <ul>
+                                <li>GeoShiftPro — Android VPN Solution</li>
+                                <li>Gesture Controller — ML Hand Tracking</li>
+                                <li>Personal AI Assistants</li>
+                                <li>E-commerce Platforms</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="section">
+            <span class="section-tag">CLIENT_TESTIMONIALS</span>
+            <div class="reviews-grid">
+                <div class="glass review-card neon-border">
+                    <div class="review-budget">$500 Project</div>
+                    <p>"Outstanding AI Integration. The automation system Tanvirr built has cut our manual workload by 70%. Pure architectural genius."</p>
+                    <div class="reviewer">- John D. | Enterprise Solutions</div>
+                </div>
+                <div class="glass review-card neon-border">
+                    <div class="review-budget">$300 Project</div>
+                    <p>"Perfect Full-Stack Build. The Next.js application is incredibly fast and the clean code was easy for our team to take over. Highly recommended."</p>
+                    <div class="reviewer">- Sarah M. | StartUp Lead</div>
+                </div>
+                <div class="glass review-card neon-border">
+                    <div class="review-budget">$200 Project</div>
+                    <p>"Fast & Clean Automation. Handled the CRM integration with ease. No surprises, just fast communication and great results."</p>
+                    <div class="reviewer">- Michael K. | Agency Owner</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Showcase (Remains but updated) -->
+        <section id="work" class="section glass" style="margin: 0 5%; border-radius: 40px;">
+            <span class="section-tag">FEATURED_ARCHITECTURES</span>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); height: 200px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="/assets/jarvis.png" alt="Jarvis" onerror="this.src='https://placehold.co/600x400/0f172a/00f2ff?text=AI+INTERFACE'" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>JARVIS SYSTEM</h3>
+                    <p>Architected a voice-interactive AI system leveraging Claude API for real-time NLP and task automation. Features high-fidelity voice-to-text integration.</p>
+                    <a href="https://github.com/Anvirrr-001/JARVIS-SYSTEM" target="_blank" class="nav-link" style="color: #00f2ff">View Details →</a>
+                </div>
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); height: 200px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="/assets/botmaster.png" alt="Bot Master" onerror="this.src='https://placehold.co/600x400/0f172a/a855f7?text=BOT+MASTER'" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>BOT MASTER</h3>
+                    <p>Visual flow builder for complex conversational AI logic. Integrated with Jivo and Jira CRM for enterprise lead automation.</p>
+                    <a href="https://github.com/Anvirrr-001/BOT-MASTER" target="_blank" class="nav-link" style="color: #00f2ff">View Details →</a>
+                </div>
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); height: 200px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="/assets/geoshift.png" alt="GeoShift Pro" onerror="this.src='https://placehold.co/600x400/0f172a/06b6d4?text=GEOSHIFT+PRO'" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>GEOSHIFT PRO</h3>
+                    <p>Advanced Android VPN solution with seamless USA identity switching. Engineered with Kotlin for 'zero-tap' automation.</p>
+                    <a href="https://github.com/Anvirrr-001/GEOSHIFT-PRO" target="_blank" class="nav-link" style="color: #00f2ff">View Details →</a>
+                </div>
+                <div class="project-card">
+                    <div style="background: linear-gradient(135deg, #1e293b, #0f172a); height: 200px; border-radius: 12px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <img src="/assets/gesture.png" alt="Gesture Controller" onerror="this.src='https://placehold.co/600x400/0f172a/3b82f6?text=GESTURE+CONTROL'" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>GESTURE CONTROL</h3>
+                    <p>Machine learning hand-tracking interface for touchless software interaction. Developed with MediaPipe and Python.</p>
+                    <a href="https://github.com/Anvirrr-001/GESTURE-CONTROL" target="_blank" class="nav-link" style="color: #00f2ff">View Details →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Footer -->
+        <section id="contact" class="section" style="text-align: center;">
+            <h2 style="font-size: 3rem; margin-bottom: 40px;">Ready to <span class="purple-grad">Automate?</span></h2>
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <a href="https://www.facebook.com/share/1EB1xQAmqj/" target="_blank" class="button-modern">Facebook</a>
+                <a href="https://www.instagram.com/tanvirrr_talukder?igsh=bjdvcGJucDNoMTJk" target="_blank" class="button-modern">Instagram</a>
+                <a href="mailto:tanvir302004@gmail.com" class="button-modern">Email Tanvirr</a>
+            </div>
+        </section>
+
+        <!-- Status Bar -->
+        <footer class="status-bar glass">
+            <div class="status-left">
+                <span>CONNECTIVITY: STALBE_v2.1</span>
+                <span>LATENCY: 12MS</span>
+                <span id="time-display">00:00:00 AM</span>
+            </div>
+            <div class="status-right">
+                <span>© 2026 TANVIRR_LABS</span>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="/main.js"></script>
+</body>
+</html>
